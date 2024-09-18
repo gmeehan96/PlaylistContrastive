@@ -1,0 +1,68 @@
+epochs: 150
+early_stop_patience: 25
+min_cache_batches: 50
+devices: [0]
+save_model_loc: ./runs
+
+wandb_params:
+  project: PlaylistContrastive
+  run_id: 0
+  run_name: Playlist_GenreCF_SC-CNN
+
+contrast_combos: [[audio,cf],
+                  [audio,genre_w2v],
+                  [cf,genre_w2v]]
+
+audio_contrast_params:
+  pair_generation_method: Playlist
+  mixup: True
+  mixup_alpha: 7.0
+  mixup_beta: 2.0
+
+dataloader_params:
+  shared:
+    batch_size: 384
+    num_workers: 6
+    num_read_ind_batches: 600
+    lmdb_cache_file: ./data/Melon/cache
+    lmdb_cache_inds_file: ./data/Melon/cache_inds.pkl
+    data_split_files: ./data/split_ids.pkl
+  contrast_files:
+    sound_tags_file: ./data/sound_tags.pkl
+    cf_emb_file: ./data/cf_vecs.pkl
+    max_num_tags: 10
+    double_window: 625
+  audio_pair_files:
+    playlist_file_dir: .../kakao_meta
+    val_pairs_file: ./data/val_pairs.pkl
+    genre_co_file: ./data/genre_co_data.pkl
+    artist_co_file: ./data/artist_co_data.pkl
+
+model_params:
+  audio:
+      backbone_type: sc_cnn
+      fc_hidden_dim: 128
+      fc_output_dim: 128
+      fc_dropout: 0.0
+      fc_hidden_batch_norm: False
+      fc_output_layer_norm: False
+  cf:
+    input_dim: 301
+    hidden_dim: 128
+    output_dim: 128
+    dropout: 0.3
+    hidden_batch_norm: False
+    output_layer_norm: True
+  genre_w2v:
+    n_head: 4
+    d_model: 128
+    d_k: 128
+    d_v: 128
+    emb_file: "./data/embedding_matrix_128.npy"
+    dropout: 0.1
+
+opt_params:
+  lr: 1.e-4
+
+loss_params:
+  contrastive_temperature: 0.1
