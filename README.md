@@ -31,5 +31,9 @@ The architecture of the audio encoder can be set by the `model_params[audio][bac
 ### Other parameters
 The `wandb_params` are used for tracking model training behaviour in Weights & Biases, and the `run_name` is also used for saving model checkpoints. To train on multiple GPUs, update the `devices` setting. Most other parameters control hyperparmeters such as the number of epochs, batch size, learning rate, and model architectures. Also included are the directories of the data files: the only one of these which needs to be updated is `dataloader_params[audio_pair_files][playlist_file_dir]`, which should point to the `kakao_meta` directory in the Melon data. 
 
-## Running downstream tasks
-To be added in due course.
+## Downstream tasks
+### Tagging
+We omit details for the tagging tasks, as these are dependent on data loading for each tagging dataset. The architecture of the downstream MLP can be found in the `model_utils.py` script [here](https://github.com/gmeehan96/PlaylistContrastive/blob/b926e5ec7475423c33f29fbc90d36960bfd182c6/model_utils.py#L345), and extracting the precomputed embeddings is covered in the `get_model_outputs` [function](https://github.com/gmeehan96/PlaylistContrastive/blob/8a668d24aa901ee69a0b386cf13fafa3bf34b9cc/downstream/playlist_cont/playlist_cont_utils.py#L80) in the playlist continuation scripts.
+
+### Playlist Continuation
+Scripts relating to the playlist continuation task can be found in `downstream/playlist_cont`. To run the playlist continuation for a completed run with a saved model, ensure the correct run name and ID are present in the `config.yaml` file and run the command `python ./downstream/playlist_cont/run_playlist_cont.py --config config.yaml`.
