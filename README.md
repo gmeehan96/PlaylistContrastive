@@ -3,7 +3,7 @@
 This repository contains code for reproducing the results of the above submission to ICASSP. In this work, we use contrastive training regimes to learn representations of musical audio, with supervision signal provided by different components of the [Melon Playlist Dataset](https://mtg.github.io/melon-playlist-dataset). 
 
 ## Environment setup
-The necessary packages for running this code can be found in `requirements.txt`. We recommend setting up a new environment (of Python version 3.6 or earlier) with these packages installed: we use Lightning Memory-Mapped Databases (LMDBs) for efficient data loading, and the ml_pyxis package for using LMDBs in Python requires a Python version of 3.6 or earlier.
+The necessary packages for running this code can be found in `requirements.txt`, and we recommend setting up a new environment with these packages installed.
 
 ## Data pre-processing
 After downloading the Melon Playlist Dataset, there are two scripts in the `preprocessing` folder that need to be run to prepare for pre-training. The first is `melon_LMDB_creation.py`, which processes the Melon spectrogram and stores them in a LMDB cache. The second is `data_split.py`, which splits the data into train/validation/test datasets and calculates the collaborative filtering data used for mode <em>P</em> in the paper. The directory containing the Melon data must be updated in each script. Before running these scripts (and all others in the repo) it is necessary to cd into the PlaylistContrastive directory.
