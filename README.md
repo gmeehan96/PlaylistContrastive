@@ -11,7 +11,7 @@ After downloading the Melon Playlist Dataset, there are two scripts in the `prep
 As noted in the paper, the upload of the Melon Playlist Dataset used in this work had data errors which meant that approximately 1% of the songs in the dataset were not used. More specifically, several of the .npy files containing spectrograms were either missing or corrupted. These files were 225.npy, 227.npy, 229.npy, 230.npy, 276.npy, and 277.npy. The code used to exclude the relevant songs can be found [here](https://github.com/gmeehan96/PlaylistContrastive/blob/e70a1299691402c66d3ee354b2f8ca435ade2d39/preprocessing/melon_LMDB_creation.py#L36-L42). 
 
 ## Running pre-training
-Contrastive pre-training is run by the command `python train.py --config config.yml`. All different parameter settings described in the paper can be produced by varying the configuration in the `config.yml` file. There are three key parameters which control the contrastive training strategy:
+Contrastive pre-training is run by the command `python train.py --config config.yaml`. All different parameter settings described in the paper can be produced by varying the configuration in the `config.yaml` file. There are three key parameters which control the contrastive training strategy:
 
 ### Cross-modal parameters
 The first is `contrast_combos`, which is used for the methods involving cross-modal contrast, i.e. **CM** and **Hybrid**, as well as for the self-supervised approach _SS_. This should be a list of lists containing two data modes, with the eligible pairs as follows: 
