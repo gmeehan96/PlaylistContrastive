@@ -1,6 +1,5 @@
 # Evaluating Contrastive Methodologies for Music Representation Learning Using Playlist Data
-
-This repository contains code for reproducing the results of the above submission to ICASSP. In this work, we use contrastive training regimes to learn representations of musical audio, with supervision signal provided by different components of the [Melon Playlist Dataset](https://mtg.github.io/melon-playlist-dataset). 
+This repository contains code for reproducing the results of the above ICASSP paper, which can be accessed [here](https://ieeexplore.ieee.org/document/10888157). In this work, we use contrastive training regimes to learn representations of musical audio, with supervision signal provided by different components of the [Melon Playlist Dataset](https://mtg.github.io/melon-playlist-dataset). 
 
 ## Environment setup
 The necessary packages for running this code can be found in `requirements.txt`, and we recommend setting up a new environment with these packages installed.
